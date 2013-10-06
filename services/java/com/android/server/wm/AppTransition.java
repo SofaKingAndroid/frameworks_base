@@ -897,7 +897,7 @@ public class AppTransition implements Dump {
 
     private void updateSettings() {
         ContentResolver resolver = mContext.getContentResolver();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 10; i++) {  
             mActivityAnimations[i] = Settings.System.getInt(resolver, Settings.System.ACTIVITY_ANIMATION_CONTROLS[i], 0);
         }
 
