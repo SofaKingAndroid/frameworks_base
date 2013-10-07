@@ -1941,6 +1941,14 @@ public final class Settings {
         public static final String VIBRATE_INPUT_DEVICES = "vibrate_input_devices";
 
         /**
+         * Method for catching and setting vibration length
+         * that are less than or equal to 35 milliseconds long.
+         * Allows user to extend minimal vibrate duration.
+         * @hide
+         */
+        public static final String GENERIC_VIBRATE_INTENSITY = "generic_vibrate_intensity";
+
+        /**
          * Ringer volume. This is used internally, changing this value will not
          * change the volume. See AudioManager.
          */
@@ -2462,6 +2470,69 @@ public final class Settings {
          * @hide
          */
         public static final String LOCKSCREEN_DISABLED = "lockscreen.disabled";
+
+        /**
+
+        /**
+         * Whether to display notifications on screen when screen is off
+         * @hide
+         */
+        public static final String ENABLE_ACTIVE_DISPLAY = "enable_active_display";
+
+        /**
+         * Whether to display notification messages around ring
+         * @hide
+         */
+        public static final String ACTIVE_DISPLAY_TEXT = "active_display_text";
+
+        /**
+         * Time to redisplay notifications on screen from when screen turns off, 0 = never redisplay
+         * @hide
+         */
+        public static final String ACTIVE_DISPLAY_REDISPLAY = "active_display_redisplay";
+
+        /**
+         * Brightness of the display when displaying the active display view
+         * @hide
+         */
+        public static final String ACTIVE_DISPLAY_BRIGHTNESS = "active_display_brightness";
+
+        /**
+         * Display active display view when device comes out of the user's pocket, etc...
+         * @hide
+         */
+        public static final String ACTIVE_DISPLAY_POCKET_MODE = "active_display_pocket_mode";
+
+        /**
+         * Whether to include ongoing/non-clearable notifications
+         * @hide
+         */
+        public static final String ACTIVE_DISPLAY_ALL_NOTIFICATIONS = "active_display_all_notifications";
+
+        /**
+         * Whether to hide low priority notifications like those from google now
+         * @hide
+         */
+        public static final String ACTIVE_DISPLAY_HIDE_LOW_PRIORITY_NOTIFICATIONS =
+                "active_display_hide_low_priority_notifications";
+
+        /**
+         * Whether to display AM/PM after time when in 12h format
+         * @hide
+         */
+        public static final String ACTIVE_DISPLAY_SHOW_AMPM = "active_display_show_ampm";
+
+        /**
+         * Whether to display the date above the time
+         * @hide
+         */
+        public static final String ACTIVE_DISPLAY_SHOW_DATE = "active_display_show_date";
+
+        /**
+         * Whether to invert the colors when in bright light
+         * @hide
+         */
+        public static final String ACTIVE_DISPLAY_SUNLIGHT_MODE = "active_display_sunlight_mode";
 
         /**
          * @deprecated Use {@link android.provider.Settings.Global#LOW_BATTERY_SOUND}
@@ -3413,6 +3484,33 @@ public final class Settings {
         public static final String LOCKSCREEN_USE_WIDGET_CONTAINER_CAROUSEL = "lockscreen_use_widget_container_carousel";
 
         /**
+         * @hide
+         */
+        public static final String WEATHER_PANEL_LONGCLICK = "weather_panel_longclick";
+
+        /**
+         * @hide
+         */
+        public static final String WEATHER_PANEL_SHORTCLICK = "weather_panel_shortclick";
+
+        /**
+         * How to show weather on the statusbar
+         *
+         * @hide
+         */
+        public static final String STATUSBAR_WEATHER_STYLE = "statusbar_weather_style";
+
+        /**
+         * @hide
+         */
+        public static final String USE_WEATHER = "use_weather";
+
+        /**
+         * @hide
+         */
+        public static final String WEATHER_SHOW_LOCATION = "weather_show_location";
+
+        /**
          * Ribbon Targets
          *
          * @hide
@@ -3922,6 +4020,14 @@ public final class Settings {
         public static final String THEME_WALLPAPER = "theme_wallpaper";
 
         /**
+         * Allows to disable Camera widget in locskcreen
+         * 0 = hide camera
+         * 1 = show camera - default
+         * @hide
+         */
+        public static final String LOCKSCREEN_CAMERA_WIDGET_SHOW = "lockscreen_camera_widget_show";
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -4129,6 +4235,25 @@ public final class Settings {
          * @hide
          */
         public static final String SHOW_STATUSBAR_IME_SWITCHER = "show_statusbar_ime_switcher";
+
+        /**
+         * Whether to show the network status in the status bar
+         * @hide
+         */
+        public static final String STATUS_BAR_NETWORK_STATS = "status_bar_network_stats";
+
+        /**
+         * Frequency at which stats are updated, in milliseconds
+         * @hide
+         */
+        public static final String STATUS_BAR_NETWORK_STATS_UPDATE_INTERVAL = "status_bar_network_stats_update_frequency";
+
+        /**
+         * Swipe to switch from notifications to tiles
+         *
+         * @hide
+         */
+        public static final String SWIPE_TO_SWITCH = "swipe_to_switch";
 
         /**
          * wake up when plugged or unplugged
