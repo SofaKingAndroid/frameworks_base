@@ -466,6 +466,9 @@ public class PhoneStatusBar extends BaseStatusBar {
 
         if (!mRecreating) {
             addActiveDisplayView();
+            /* ChaosLab: GestureAnywhere - BEGIN */
+            addGestureAnywhereView();
+            /* ChaosLab: GestureAnywhere - END */
         }
 
         // figure out which pixel-format to use for the status bar.
