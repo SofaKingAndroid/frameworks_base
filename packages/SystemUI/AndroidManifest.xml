@@ -1,6 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:androidprv="http://schemas.android.com/apk/prv/res/android"
         package="com.android.systemui"
+        android:sharedUserId="android.uid.system"
         coreApp="true">
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
@@ -73,10 +74,6 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.NFC" />
     <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
-
-    <!--Halo-->
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
-
 
     <!-- Secure Screenshot -->
     <protected-broadcast android:name="android.permission.SCREENSHOT" />
@@ -384,9 +381,12 @@
                 <category android:name="android.intent.category.DESK_DOCK" />
             </intent-filter>
         </activity>
-
-        <activity android:name="com.android.systemui.Transparent"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-
+        <activity android:name=".statusbar.policy.activedisplay.DummyActivity"
+                  android:label=""
+                  android:taskAffinity=""
+                  android:excludeFromRecents="true"
+                  android:exported="true"
+                  android:theme="@style/Theme.DummyActivity">
+        </activity>
     </application>
 </manifest>

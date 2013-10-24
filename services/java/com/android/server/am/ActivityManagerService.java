@@ -1115,7 +1115,11 @@ public final class ActivityManagerService  extends ActivityManagerNative
                     mHandler.sendMessageDelayed(nmsg, ActiveServices.SERVICE_TIMEOUT);
                     return;
                 }
-                mServices.serviceTimeout((ProcessRecord)msg.obj);
+                //synchronising to avoid proc.executingServices set
+                //getting updated while being iterated in serviceTimeout()
+                synchronized(ActivityManagerService.this){
+                    mServices.serviceTimeout((ProcessRecord)msg.obj);
+                }
             } break;
             case UPDATE_TIME_ZONE: {
                 synchronized (ActivityManagerService.this) {
@@ -4664,17 +4668,6 @@ public final class ActivityManagerService  extends ActivityManagerNative
             ActivityRecord r = getCallingRecordLocked(token);
             return r != null ? r.intent.getComponent() : null;
         }
-    }
-
-    public String getCallingPackageForBroadcast(boolean foreground) {
-        BroadcastQueue queue = foreground ? mFgBroadcastQueue : mBgBroadcastQueue;
-        BroadcastRecord r = queue.getProcessingBroadcast();
-        if (r != null) {
-            return r.callerPackage;
-        } else {
-            Log.e(TAG, "Broadcast sender is only retrievable in the onReceive");
-        }
-        return null;
     }
 
     private ActivityRecord getCallingRecordLocked(IBinder token) {

@@ -754,8 +754,9 @@ public class NetworkController extends BroadcastReceiver {
                                 R.string.accessibility_data_connection_4g);
                     } else {
                         mDataIconList = TelephonyIcons.DATA_LTE[mInetCondition];
-                        mDataTypeIconId = R.drawable.stat_sys_data_connected_lte;
-                        mQSDataTypeIconId = R.drawable.ic_qs_signal_lte;
+                        mDataTypeIconId = mDataIconList[0];
+                        mQSDataTypeIconId = (isConnected ? R.drawable.ic_qs_signal_full_lte
+                                : R.drawable.ic_qs_signal_lte);
                         mContentDescriptionDataType = mContext.getString(
                                 R.string.accessibility_data_connection_lte);
                     }
@@ -1625,7 +1626,7 @@ public class NetworkController extends BroadcastReceiver {
                     this);
             resolver.registerContentObserver(
                     Settings.System.getUriFor(Settings.System.STATUSBAR_SIGNAL_SHOW_4G_FOR_LTE),
-                    mContext.getResources().getBoolean(R.bool.config_show4GForLTE),
+                    mContext.getResources().getBoolean(com.android.internal.R.bool.config_show4GForLTE),
                     this);
             updateSettings();
         }
@@ -1644,7 +1645,7 @@ public class NetworkController extends BroadcastReceiver {
                 Settings.System.STATUSBAR_SIGNAL_CLUSTER_ALT, clustdefault));
         mShow4gForLte = (Settings.System.getBoolean(mContext.getContentResolver(),
                 Settings.System.STATUSBAR_SIGNAL_SHOW_4G_FOR_LTE,
-                mContext.getResources().getBoolean(R.bool.config_show4GForLTE)));
+                mContext.getResources().getBoolean(com.android.internal.R.bool.config_show4GForLTE)));
         updateTelephonySignalStrength();
         updateDataNetType();
         updateDataIcon();
