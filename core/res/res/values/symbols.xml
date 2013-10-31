@@ -260,7 +260,6 @@
   <java-symbol type="bool" name="config_sms_utf8_support" />
   <java-symbol type="bool" name="config_swipeDisambiguation" />
   <java-symbol type="bool" name="config_syncstorageengine_masterSyncAutomatically" />
-  <java-symbol type="bool" name="config_smsUseExpectMore" /> 
   <java-symbol type="bool" name="config_telephony_use_own_number_for_voicemail" />
   <java-symbol type="bool" name="config_ui_enableFadingMarquee" />
   <java-symbol type="bool" name="config_use_strict_phone_number_comparation" />
@@ -1025,8 +1024,8 @@
   <java-symbol type="drawable" name="picture_emergency" />
   <java-symbol type="drawable" name="platlogo" />
   <java-symbol type="drawable" name="platlogo_alt" />
-  <java-symbol type="drawable" name="aokplogo" />
-  <java-symbol type="drawable" name="aokplogo_alt" />
+  <java-symbol type="drawable" name="skalogo" />
+  <java-symbol type="drawable" name="skalogo_alt" />
   <java-symbol type="drawable" name="stat_notify_sync_error" />
   <java-symbol type="drawable" name="stat_notify_wifi_in_range" />
   <java-symbol type="drawable" name="stat_notify_rssi_in_range" />
@@ -1335,6 +1334,7 @@
   <java-symbol type="drawable" name="menu_background" />
   <java-symbol type="drawable" name="stat_sys_secure" />
   <java-symbol type="drawable" name="kg_widget_bg_padded" />
+  <java-symbol type="drawable" name="kg_security_lock_normal" />
   <java-symbol type="id" name="action_mode_bar_stub" />
   <java-symbol type="id" name="alarm_status" />
   <java-symbol type="id" name="button0" />
@@ -1935,6 +1935,9 @@
   <java-symbol type="drawable" name="ic_lock_torch" />
   <java-symbol type="string" name="global_action_torch" />
 
+  <!-- Hardware Key ReMapping -->
+  <java-symbol type="integer" name="config_deviceHardwareKeys" />
+
   <!-- HW rotation lock -->
   <java-symbol type="string" name="toast_rotation_unlocked" />
   <java-symbol type="string" name="toast_rotation_locked" />
@@ -2047,4 +2050,6 @@
   <java-symbol type="layout" name="msim_keyguard_sim_puk_view" />
   <java-symbol type="layout" name="msim_keyguard_carrier_area" />
 
+  <!-- SMS RIL_REQUEST_SEND_SMS_EXPECT_MORE -->
+  <java-symbol type="bool" name="config_smsUseExpectMore" />
 </resources>

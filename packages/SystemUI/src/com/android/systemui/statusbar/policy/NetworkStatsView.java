@@ -47,6 +47,8 @@ public class NetworkStatsView extends LinearLayout {
     private long mLastRx;
     private long mRefreshInterval;
     private long mLastUpdateTime;
+    private Context mContext;
+    protected int mNetStatsColor;
 
     SettingsObserver mSettingsObserver;
 
@@ -60,6 +62,7 @@ public class NetworkStatsView extends LinearLayout {
 
     public NetworkStatsView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+        mContext = context;
         mLastRx = TrafficStats.getTotalRxBytes();
         mLastTx = TrafficStats.getTotalTxBytes();
         mHandler = new Handler();
@@ -73,7 +76,7 @@ public class NetworkStatsView extends LinearLayout {
     // runnable to invalidate view via mHandler.postDelayed() call
     private final Runnable mUpdateRunnable = new Runnable() {
         public void run() {
-            if(mActivated && mAttached) {
+            if (mActivated && mAttached) {
                 updateStats();
                 invalidate();
             }
@@ -92,6 +95,8 @@ public class NetworkStatsView extends LinearLayout {
                     Settings.System.STATUS_BAR_NETWORK_STATS), false, this);
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.STATUS_BAR_NETWORK_STATS_UPDATE_INTERVAL), false, this);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.STATUS_BAR_NETWORK_STATS_TEXT_COLOR), false, this);
             onChange(true);
         }
 
@@ -99,7 +104,8 @@ public class NetworkStatsView extends LinearLayout {
         public void onChange(boolean selfChange) {
             // check for connectivity
             ConnectivityManager cm =
-                    (ConnectivityManager)getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+                    (ConnectivityManager)getContext().getSystemService(
+                            Context.CONNECTIVITY_SERVICE);
 
             NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
             boolean networkAvailable = activeNetwork != null ? activeNetwork.isConnected() : false;
@@ -108,6 +114,16 @@ public class NetworkStatsView extends LinearLayout {
 
             mRefreshInterval = Settings.System.getLong(mContext.getContentResolver(),
                     Settings.System.STATUS_BAR_NETWORK_STATS_UPDATE_INTERVAL, 500);
+
+            int newColor = 0;
+            ContentResolver resolver = getContext().getContentResolver();
+            newColor = Settings.System.getInt(resolver,
+                    Settings.System.STATUS_BAR_NETWORK_STATS_TEXT_COLOR,mNetStatsColor);
+            if (newColor < 0 && newColor != mNetStatsColor) {
+                mNetStatsColor = newColor;
+                if (mTextViewTx != null) mTextViewTx.setTextColor(mNetStatsColor);
+                if (mTextViewRx != null) mTextViewRx.setTextColor(mNetStatsColor);
+            }
 
             setVisibility(mActivated ? View.VISIBLE : View.GONE);
 
@@ -140,6 +156,7 @@ public class NetworkStatsView extends LinearLayout {
         super.onAttachedToWindow();
         if (!mAttached) {
             mAttached = true;
+            mNetStatsColor = mTextViewTx.getTextColors().getDefaultColor();
             mHandler.postDelayed(mUpdateRunnable, mRefreshInterval);
         }
     }
