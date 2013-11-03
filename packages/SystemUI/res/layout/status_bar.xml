@@ -106,6 +106,16 @@
                     android:layout_height="wrap_content"
                     android:visibility="gone"
                 />
+                <TextView
+                    android:id="@+id/battery_text"
+                    android:textAppearance="@style/TextAppearance.StatusBar.Battery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:singleLine="true"
+                    android:paddingLeft="4dip"
+                    android:layout_marginRight="-3dip"
+                    android:gravity="center_vertical|left"
+                    />		
                 <include layout="@layout/battery_cluster_view"
                     android:id="@+id/battery_cluster"
                     android:layout_height="wrap_content"

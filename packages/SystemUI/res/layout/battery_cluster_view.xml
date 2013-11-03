@@ -28,7 +28,7 @@
         android:id="@+id/battery_combo"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:paddingStart="4dp">
+        android:paddingLeft="4dp">
 
         <ImageView
             android:id="@+id/battery"
@@ -38,6 +38,12 @@
         <TextView
             android:id="@+id/battery_text"
             style="@style/Battery_Offset"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:visibility="gone" />
+        <TextView
+            android:id="@+id/battery_text_cm"
+            style="@style/Battery_CM"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:visibility="gone" />
@@ -68,5 +74,13 @@
             android:layout_width="wrap_content"
             android:singleLine="true"
             android:visibility="gone" />
+        <com.android.systemui.statusbar.policy.CircleBattery
+            android:id="@+id/circle_battery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.StatusBar.BatteryTextOnly"
+            android:singleLine="true"
+            android:gravity="bottom"
+        />
     </FrameLayout>
 </com.android.systemui.statusbar.policy.SbBatteryController>

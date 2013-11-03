@@ -203,10 +203,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:scaleType="centerInside"
-                android:layout_gravity="left|center_vertical"
-                android:layout_alignBaseline="@id/wifi_signal"
+                android:layout_gravity="center_vertical"
                 android:paddingEnd="6dp"
-            />
+                android:contentDescription="@null"
+                />
+
+            <TextView
+                android:id="@+id/battery_text"
+                style="@style/SystemBarNotificationText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|center_vertical"
+                android:paddingEnd="2dp"
+                android:singleLine="true"
+                android:text="@string/status_bar_settings_settings_button"
+                />
 
             <!-- this will stretch to eat up available space -->
             <View

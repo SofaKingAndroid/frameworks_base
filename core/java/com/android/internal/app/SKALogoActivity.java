@@ -66,7 +66,7 @@ public class SKALogoActivity extends Activity {
         tv.setTextSize(1.25f*size);
         tv.setTextColor(0xFFFFFFFF);
         tv.setShadowLayer(4*metrics.density, 0, 2*metrics.density, 0x66000000);
-        tv.setText("SofaKingAndroid");
+        tv.setText("SofaKing Android");
         view.addView(tv, lp);
 
         tv = new TextView(this);
@@ -113,7 +113,7 @@ public class SKALogoActivity extends Activity {
                         .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                             | Intent.FLAG_ACTIVITY_CLEAR_TASK
                             | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS)
-                        .addCategory("com.android.internal.category.skaLOGO"));
+                        .addCategory("com.android.internal.category.SKALOGO"));
                         //.setClassName("com.android.systemui","com.android.systemui.SlothsBalls"));
                 } catch (ActivityNotFoundException ex) {
                     android.util.Log.e("SKALogoActivity", "Couldn't find a Sloths Nut Sack.");
